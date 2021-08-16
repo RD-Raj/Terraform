@@ -1,4 +1,2 @@
 # Terraform
-Terraform project
-
-Test project
+Terraform test project
