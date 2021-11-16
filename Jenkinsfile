@@ -1,16 +1,22 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Build ') {
-            steps {
-                echo 'Hello World Building'
-            }
-        }
-    stage('Build1 ') {
-            steps {
-                echo 'Hello World Building.......1'
-            }
-        }
+    parameters {
+        string(name: 'environment', defaultValue: 'default', description: 'Workspace/environment file to use for deployment')
+        string(name: 'version', defaultValue: '', description: 'Version variable to pass to Terraform')
+        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
     }
+    
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+     
+    }
+
+    stages {
+        stage('Plan') {
+                sh 'terraform init -input=false'
+                sh 'terraform plan -input=false' 
+            }
+        }
 }
