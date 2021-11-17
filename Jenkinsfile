@@ -14,6 +14,11 @@ pipeline {
     }
     
     stages {
+        stage('Git Checkout') {
+              steps {
+                  git branch: 'main', changelog: false, credentialsId: '4013718d-c6f5-4746-b04e-40c1aacb87e1', poll: false, url: 'https://github.com/RD-Raj/Terraform.git'
+                    }
+             }
          stage('Terraform Init') {
             steps {
                     sh "terraform init -input=false"
