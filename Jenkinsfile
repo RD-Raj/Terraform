@@ -14,10 +14,14 @@ pipeline {
     }
     
     stages {
+         stage('Terraform Init') {
+            steps {
+                    sh "terraform init -input=false"
+                  }
+         }
         stage('Plan') {
             steps {
-                sh 'terraform init -input=false'
-                sh 'terraform plan -input=false' 
+                  sh 'terraform plan -input=false' 
                   }
             }
     
