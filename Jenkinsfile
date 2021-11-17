@@ -15,8 +15,10 @@ pipeline {
     
     stages {
         stage('Git Checkout') {
-            git branch: 'main', credentialsId: '4013718d-c6f5-4746-b04e-40c1aacb87e1', url: 'https://github.com/RD-Raj/Terraform.git'
-            }
+                steps {
+                    git branch: 'main', credentialsId: '4013718d-c6f5-4746-b04e-40c1aacb87e1', url: 'https://github.com/RD-Raj/Terraform.git'
+                      }
+                }
            }    
     stages {
         stage('Plan') {
