@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    tools {
+             git 'Default'
+          }
 
     parameters {
         string(name: 'environment', defaultValue: 'default', description: 'Workspace/environment file to use for deployment')
