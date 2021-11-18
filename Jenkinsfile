@@ -24,11 +24,11 @@ pipeline {
     
         stage('AWS Cred')  {
              steps {
-                 withCredentials([[
+                 withCredentials([
                      $class: 'AmazonWebServicesCredentialsBinding',
                     usernamePassword(credentialsId: 'AWSCredID', 
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']) 
                 {       sh 'aws s3 ls'           }
            }    
         }
