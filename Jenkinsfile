@@ -29,7 +29,7 @@ pipeline {
                     credentialsId: "AWSCredID", 
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
-                {       sh "cho this is testing cred"           }
+                {       bat "cho this is testing cred"           }
            }    
         }
         stage('Git Checkout') {
@@ -44,12 +44,12 @@ pipeline {
             }
          stage('Terraform Init') {
             steps {
-                    sh "terraform init -input=false"
+                    bat "terraform init -input=false"
                   }
          }
         stage('Plan') {
             steps {
-                  sh 'terraform plan -input=false' 
+                  bat 'terraform plan -input=false' 
                   }
             }
     
