@@ -29,7 +29,7 @@ pipeline {
                     credentialsId: "AWSCredID", 
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
-                {       bat "cho this is testing cred"           }
+            
            }    
         }
         stage('Git Checkout') {
@@ -37,11 +37,11 @@ pipeline {
                   git branch: 'main', changelog: false, credentialsId: '4013718d-c6f5-4746-b04e-40c1aacb87e1', poll: false, url: 'https://github.com/RD-Raj/Terraform.git'
                     }
              }
-        stage('Test123') {
+       /* stage('Test123') {
             steps {
                     echo "Testting"
                   }
-            }
+            }  */
          stage('Terraform Init') {
             steps {
                     bat "terraform init -input=false"
