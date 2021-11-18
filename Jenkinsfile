@@ -22,11 +22,9 @@ pipeline {
 }
     stages {
             stage('AWS Cred') (
-            withCredentials([usernamePassword(credentialsId: 'Jenkins AWS Cred', usernameVariable: 'AWS_ACCESS_KEY_ID
-                                                ', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                                              sh 'aws s3 ls'
-
-           }
+            withCredentials([usernamePassword(credentialsId: 'Jenkins AWS Cred', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) 
+                {       sh 'aws s3 ls'           }
+           }    
         
         stage('Git Checkout') {
               steps {
