@@ -20,7 +20,7 @@ pipeline {
     
 
     
-    node {
+    stages {
     
         stage('AWS Cred') 
              steps {
