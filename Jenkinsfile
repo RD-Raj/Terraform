@@ -22,12 +22,12 @@ pipeline {
     
     stages {
     
-        stage('AWS Cred') 
+        stage('AWS Cred')  {
              steps {
             withCredentials([usernamePassword(credentialsId: 'Jenkins AWS Cred', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) 
                 {       sh 'aws s3 ls'           }
            }    
-        
+        }
         stage('Git Checkout') {
               steps {
                   git branch: 'main', changelog: false, credentialsId: '4013718d-c6f5-4746-b04e-40c1aacb87e1', poll: false, url: 'https://github.com/RD-Raj/Terraform.git'
